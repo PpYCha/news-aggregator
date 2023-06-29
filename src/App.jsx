@@ -9,10 +9,11 @@ function App() {
     const fetchArticles = async () => {
       try {
         const response = await fetch(
-          `https://newsapi.org/v2/top-headlines?country=us&apiKey=${NEWS_API_KEY}`
+          `https://newsapi.org/v2/top-headlines?country=ar&apiKey=${NEWS_API_KEY}`
         );
         const data = await response.json();
         setArticles(data.articles);
+        console.log(data.articles);
       } catch (error) {
         console.log(error);
       }
