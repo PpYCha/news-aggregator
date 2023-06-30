@@ -1,37 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
+import Footer from "./layout/Footer";
+import Nav from "./layout/Nav";
 
 function App() {
-  const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY;
-
-  const [articles, setArticles] = useState([]);
-
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const response = await fetch(
-          `https://newsapi.org/v2/top-headlines?country=ar&apiKey=${NEWS_API_KEY}`
-        );
-        const data = await response.json();
-        setArticles(data.articles);
-        console.log(data.articles);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchArticles();
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div>
-      <h1>News Feed</h1>
-      {articles.map((article, index) => (
-        <div key={index}>
-          <h3>{article.title}</h3>
-          <p>{article.description}</p>
-          <img src={article.urlToImage} alt="Article" />
-        </div>
-      ))}
+      <Nav />
+      <div className="grid grid-cols-12 gap-4">
+        <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      </div>
+      <Footer />
     </div>
   );
 }
